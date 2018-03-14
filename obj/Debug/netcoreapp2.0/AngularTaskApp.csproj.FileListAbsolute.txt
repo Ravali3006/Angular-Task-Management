@@ -1,0 +1,11 @@
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\bin\Debug\netcoreapp2.0\AngularTaskApp.deps.json
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\bin\Debug\netcoreapp2.0\AngularTaskApp.runtimeconfig.json
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\bin\Debug\netcoreapp2.0\AngularTaskApp.runtimeconfig.dev.json
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\bin\Debug\netcoreapp2.0\AngularTaskApp.dll
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\bin\Debug\netcoreapp2.0\AngularTaskApp.pdb
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\obj\Debug\netcoreapp2.0\AngularTaskApp.csprojResolveAssemblyReference.cache
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\obj\Debug\netcoreapp2.0\AngularTaskApp.csproj.CoreCompileInputs.cache
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\obj\Debug\netcoreapp2.0\AngularTaskApp.AssemblyInfoInputs.cache
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\obj\Debug\netcoreapp2.0\AngularTaskApp.AssemblyInfo.cs
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\obj\Debug\netcoreapp2.0\AngularTaskApp.dll
+C:\Users\raval\Documents\Visual Studio 2017\Projects\AngularTaskApp\AngularTaskApp\obj\Debug\netcoreapp2.0\AngularTaskApp.pdb

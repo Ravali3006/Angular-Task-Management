@@ -1,0 +1,130 @@
+<style type="text/css">
+  .projectList {
+    width: 75%;
+    margin-top: 15px;
+  }
+
+  .newbutton {
+    text-align: center;
+  }
+
+  .successbutton {
+    background-color: #4CAF50;
+    cursor: pointer;
+  }
+
+    .successbutton:hover {
+      background-color: #3e8e41
+    }
+
+  .deletebutton {
+    background-color: #f44336;
+    cursor: pointer;
+  }
+
+    .deletebutton:hover {
+      background-color: #ff6600
+    }
+</style>
+
+<div>
+  <b>Project Information</b>
+  <div class="newbutton">
+  </div>
+  <button class="newbutton">New Project</button>
+  <table class="projectList" border="1">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Project Manager</th>
+        <th>Team</th>
+        <th>Status</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of Projects">
+        <td>
+          {{project.Title}}
+        </td>
+        <td>
+          {{project.Description}}
+        </td>
+        <td>
+          {{project.DueDate}}
+        </td>
+        <td>
+          {{project.ProjectManager}}
+        </td>
+        <td>
+          {{project.Team}}
+        </td>
+        <td>
+          {{project.Status}}
+        </td>
+        <td>
+          <button (click)="EditProject()" class="successbutton">Edit</button>
+          <button class="deletebutton">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+      <!--<div *ngIf="editProjDialog">
+        <p-dialog [(visible)]="editProjDialog" modal="modal" header="Edit Projects">
+          <input type="hidden" name="hdnId" id="hdnId" value="" />
+          <div class="form-group row add-new-user">
+            <div class=".labels">
+              <label class="add-user-label">Title</label>
+            </div>
+            <div class=".textfields">
+              <input type="text" name="Title" [(ngModel)]="editProj.Title" #Name="ngModel" />
+            </div>
+          </div>
+          <div class="form-group row add-new-user">
+            <div class=".labels">
+              <label class="add-user-label">Description</label>
+            </div>
+            <div class=".textfields">
+              <input type="text" name="Description" [(ngModel)]="editProj.Description" #Description="ngModel" />
+            </div>
+          </div>
+          <div class="form-group row add-new-user">
+            <div class=".labels">
+              <label class="add-user-label">Due Date</label>
+            </div>
+            <div class=".textfields">
+              <input type="text" name="DueDate" [(ngModel)]="editProj.Duedate" #DueDate="ngModel" />
+            </div>
+          </div>
+          <div class="form-group row add-new-user">
+            <div class=".labels">
+              <label class="add-user-label">Project Manager</label>
+            </div>
+            <div class=".textfields">
+              <input type="text" name="ProjectManager" [(ngModel)]="editProj.ProjectManager" #ProjectManager="ngModel" />
+            </div>
+          </div>
+          <div class="form-group row add-new-user">
+            <div class=".labels">
+              <label class="add-user-label">Team</label>
+            </div>
+            <div class=".textfields">
+              <input type="text" name="Team" [(ngModel)]="editProj.Team" #Team="ngModel" />
+            </div>
+          </div>
+          <div class="form-group row add-new-user">
+            <div class=".labels">
+              <label class="add-user-label">Status</label>
+            </div>
+            <div class=".textfields">
+              <input type="text" name="Status" [(ngModel)]="editProj.Status" #Status="ngModel" />
+            </div>
+          </div>
+        </p-dialog>
+      </div>-->
+</div>
+  <popup>
+    Add your custom html elements here
+  </popup>
