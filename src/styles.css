@@ -29,3 +29,12 @@ nav ul li{
     padding:15px 20px;
   }
 
+footer {
+  display: inline-block;
+  width: 100%;
+  font-size: 15px;
+  margin:200px auto;
+  padding: 0;
+  background: #010000;
+  color: #ffffff;
+}

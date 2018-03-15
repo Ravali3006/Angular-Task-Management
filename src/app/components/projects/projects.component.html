@@ -1,16 +1,15 @@
+
+
 <style type="text/css">
   .projectList {
     width: 75%;
     margin-top: 15px;
   }
 
-  .newbutton {
-    text-align: center;
-  }
-
   .successbutton {
     background-color: #4CAF50;
     cursor: pointer;
+    text-align: center;
   }
 
     .successbutton:hover {
@@ -26,12 +25,14 @@
       background-color: #ff6600
     }
 </style>
-
+{{name}}
+<input type="text" [(ngModel)]="name" />
 <div>
   <b>Project Information</b>
-  <div class="newbutton">
+  <div>
   </div>
-  <button class="newbutton">New Project</button>
+  <button class="successbutton" (click)="AddProject()">New Project</button>
+  <button class="successbutton" (click)="AddTask()">New Task</button>
   <table class="projectList" border="1">
     <thead>
       <tr>
@@ -46,85 +47,133 @@
     </thead>
     <tbody>
       <tr *ngFor="let project of Projects">
-        <td>
+        <td align="center">
           {{project.Title}}
         </td>
-        <td>
+        <td align="center">
           {{project.Description}}
         </td>
-        <td>
+        <td align="center">
           {{project.DueDate}}
         </td>
-        <td>
+        <td align="center">
           {{project.ProjectManager}}
         </td>
-        <td>
+        <td align="center">
           {{project.Team}}
         </td>
-        <td>
+        <td align="center">
           {{project.Status}}
         </td>
-        <td>
-          <button (click)="EditProject()" class="successbutton">Edit</button>
-          <button class="deletebutton">Delete</button>
+        <td align="center">
+          <button class="successbutton" (click)="EditProject(project)">Edit</button>
         </td>
       </tr>
     </tbody>
   </table>
-      <!--<div *ngIf="editProjDialog">
-        <p-dialog [(visible)]="editProjDialog" modal="modal" header="Edit Projects">
-          <input type="hidden" name="hdnId" id="hdnId" value="" />
-          <div class="form-group row add-new-user">
-            <div class=".labels">
-              <label class="add-user-label">Title</label>
-            </div>
-            <div class=".textfields">
-              <input type="text" name="Title" [(ngModel)]="editProj.Title" #Name="ngModel" />
-            </div>
-          </div>
-          <div class="form-group row add-new-user">
-            <div class=".labels">
-              <label class="add-user-label">Description</label>
-            </div>
-            <div class=".textfields">
-              <input type="text" name="Description" [(ngModel)]="editProj.Description" #Description="ngModel" />
-            </div>
-          </div>
-          <div class="form-group row add-new-user">
-            <div class=".labels">
-              <label class="add-user-label">Due Date</label>
-            </div>
-            <div class=".textfields">
-              <input type="text" name="DueDate" [(ngModel)]="editProj.Duedate" #DueDate="ngModel" />
-            </div>
-          </div>
-          <div class="form-group row add-new-user">
-            <div class=".labels">
-              <label class="add-user-label">Project Manager</label>
-            </div>
-            <div class=".textfields">
-              <input type="text" name="ProjectManager" [(ngModel)]="editProj.ProjectManager" #ProjectManager="ngModel" />
-            </div>
-          </div>
-          <div class="form-group row add-new-user">
-            <div class=".labels">
-              <label class="add-user-label">Team</label>
-            </div>
-            <div class=".textfields">
-              <input type="text" name="Team" [(ngModel)]="editProj.Team" #Team="ngModel" />
-            </div>
-          </div>
-          <div class="form-group row add-new-user">
-            <div class=".labels">
-              <label class="add-user-label">Status</label>
-            </div>
-            <div class=".textfields">
-              <input type="text" name="Status" [(ngModel)]="editProj.Status" #Status="ngModel" />
-            </div>
-          </div>
-        </p-dialog>
-      </div>-->
+
 </div>
-  <popup>
-    Add your custom html elements here
-  </popup>
+<popup #addpopup>
+  <table>
+    <tr>
+      <td>
+        <label for="title" class="labels">Title</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Description</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Due Date</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Project Manager</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Team</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Status</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+  </table>
+</popup>
+<popup #Editpopup>
+  <table>
+    <tr>
+      <td>
+        <label id="Title" class="labels">Title</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Description</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Due Date</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Project Manager</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Team</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Status</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+  </table>
+</popup>

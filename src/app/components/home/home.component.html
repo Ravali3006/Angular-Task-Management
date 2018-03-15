@@ -1,10 +1,139 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title></title>
-  </head>
-  <body>
-  HOME TAB
-  </body>
-  </html>
+<style type="text/css">
+  .projectList {
+    width: 75%;
+    margin-top: 15px;
+  }
+  .successbutton {
+    background-color: #4CAF50;
+    cursor: pointer;
+    text-align: center;
+  }
+    .successbutton:hover {
+      background-color: #3e8e41
+    }
+</style>
+
+<div>
+  <b>Task Information</b>
+  <div>
+  </div>
+  <button class="successbutton">New Task</button>
+  <table class="projectList" border="1">
+    <thead>
+      <tr>
+        <th>Projects</th>
+        <th>To Do</th>
+        <th>In Progress</th>
+        <th>Completed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of Tasks">
+        <td align="center">
+         {{task.ProjectTitle}}
+        </td>
+        <td align="center">
+          <table border="1">
+            <tr>
+              <td colspan="2" align="center">
+                Task Details
+              </td>
+            </tr>
+            <tr>
+              <td align="center">Task Title</td>
+              <td align="center">{{task.TaskTitle}}</td>
+            </tr>
+            <tr>
+              <td align="center">Description</td>
+              <td align="center">{{task.Description}}</td>
+            </tr>
+            <tr>
+              <td align="center">Due Date</td>
+              <td align="center">{{task.DueDate}}</td>
+            </tr>
+            <tr *ngIf='MoreDetails'>
+              <td align="center">Assigned to</td>
+              <td align="center">{{task.AssignedTo}}</td>
+            </tr>
+            <tr *ngIf='MoreDetails'>
+              <td align="center">Status</td>
+              <td align="center">{{task.Status}}</td>
+            </tr>
+            <tr *ngIf='MoreDetails'>
+              <td align="center">Created By</td>
+              <td align="center">{{task.CreatedBy}}</td>
+            </tr>
+            <tr *ngIf='MoreDetails'>
+              <td align="center">Created On</td>
+              <td align="center">{{task.CreatedOn}}</td>
+            </tr>
+            <tr>
+              <td align="center" colspan="2">
+                <button class="successbutton" (click)="toggleDetails()"> {{MoreDetails ? 'Close' : 'More'}} Details</button>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td align="center">
+
+        </td>
+        <td align="center">
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<!--<popup>
+  <table>
+    <tr>
+      <td>
+        <label for="title" class="labels">Title</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Description</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Due Date</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Project Manager</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Team</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label class="labels">Status</label>
+      </td>
+      <td>
+        <input type="text" class="textboxs" />
+      </td>
+    </tr>
+  </table>
+</popup>-->

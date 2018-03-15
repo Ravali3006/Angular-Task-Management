@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\app\components\footer\footer.component.ts" />
     <None Remove="src\app\components\home\home.component.ts" />
     <None Remove="src\app\components\navigation\nav.component.ts" />
     <None Remove="src\app\components\projects\projects.component.ts" />
@@ -26,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="src\app\components\footer\footer.component.ts" />
     <TypeScriptCompile Include="src\app\components\home\home.component.ts" />
     <TypeScriptCompile Include="src\app\components\navigation\nav.component.ts" />
     <TypeScriptCompile Include="src\app\components\projects\projects.component.ts" />
