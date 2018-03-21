@@ -1,20 +1,28 @@
 
 
 <style type="text/css">
-  .projectList {
-    width: 75%;
+  
+  #projectList {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
     margin-top: 15px;
+    table-layout: fixed;
   }
 
   .successbutton {
     background-color: #4CAF50;
     cursor: pointer;
     text-align: center;
+    color: white;
+    padding: 8px;
+    font-size: 15px;
+    border: none;
   }
 
-    .successbutton:hover {
-      background-color: #3e8e41
-    }
+  .successbutton:hover {
+    background-color: #3e8e41
+  }
 
   .deletebutton {
     background-color: #f44336;
@@ -25,15 +33,10 @@
       background-color: #ff6600
     }
 </style>
-{{name}}
-<input type="text" [(ngModel)]="name" />
 <div>
-  <b>Project Information</b>
-  <div>
-  </div>
-  <button class="successbutton" (click)="AddProject()">New Project</button>
+  <button class="successbutton" (click)="AddProject()" >New Project</button>
   <button class="successbutton" (click)="AddTask()">New Task</button>
-  <table class="projectList" border="1">
+  <table id="projectList" border="1">
     <thead>
       <tr>
         <th>Title</th>
@@ -80,7 +83,7 @@
         <label for="title" class="labels">Title</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="Title1" [(ngModel)]="editProj.Title" #Title1="ngModel" />
       </td>
     </tr>
     <tr>
@@ -88,7 +91,7 @@
         <label class="labels">Description</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="Description1" [(ngModel)]="editProj.Description" #Description1="ngModel"  />
       </td>
     </tr>
     <tr>
@@ -96,7 +99,7 @@
         <label class="labels">Due Date</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="DueDate1" [(ngModel)]="editProj.DueDate" #DueDate1="ngModel" />
       </td>
     </tr>
     <tr>
@@ -104,7 +107,7 @@
         <label class="labels">Project Manager</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="ProjectManager1" [(ngModel)]="editProj.ProjectManager" #ProjectManager1="ngModel" />
       </td>
     </tr>
     <tr>
@@ -112,7 +115,7 @@
         <label class="labels">Team</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="Team1" [(ngModel)]="editProj.Team" #Team1="ngModel" />
       </td>
     </tr>
     <tr>
@@ -120,10 +123,12 @@
         <label class="labels">Status</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="Status1" [(ngModel)]="editProj.Status" #Status1="ngModel" />
       </td>
     </tr>
   </table>
+  <button value="{{mode}}" (click)="ManageProject(editProj)" class="successbutton">Add</button>
+  <button (click)="CancelAdd()" class="successbutton">Cancel</button>
 </popup>
 <popup #Editpopup>
   <table>
@@ -132,7 +137,7 @@
         <label id="Title" class="labels">Title</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="Title" [(ngModel)]="editProj.Title" #Title="ngModel" />
       </td>
     </tr>
     <tr>
@@ -140,7 +145,7 @@
         <label class="labels">Description</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="Description" [(ngModel)]="editProj.Description" #Description="ngModel" />
       </td>
     </tr>
     <tr>
@@ -148,7 +153,7 @@
         <label class="labels">Due Date</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="DueDate" [(ngModel)]="editProj.DueDate" #DueDate="ngModel" />
       </td>
     </tr>
     <tr>
@@ -156,7 +161,7 @@
         <label class="labels">Project Manager</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="ProjectManager" [(ngModel)]="editProj.ProjectManager" #ProjectManager="ngModel" />
       </td>
     </tr>
     <tr>
@@ -164,7 +169,7 @@
         <label class="labels">Team</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="Team" [(ngModel)]="editProj.Team" #Team="ngModel" />
       </td>
     </tr>
     <tr>
@@ -172,8 +177,10 @@
         <label class="labels">Status</label>
       </td>
       <td>
-        <input type="text" class="textboxs" />
+        <input type="text" class="textboxs" name="Status" [(ngModel)]="editProj.Status" #Status="ngModel" />
       </td>
     </tr>
   </table>
+  <button value="{{mode}}" (click)="CancelUpdate()" class="successbutton">Update</button>
+  <button (click)="CancelUpdate()" class="successbutton">Cancel</button>
 </popup>

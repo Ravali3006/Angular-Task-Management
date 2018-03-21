@@ -1,91 +1,213 @@
 <style type="text/css">
-  .projectList {
-    width: 75%;
+
+
+  #projectList, #projectList1 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
     margin-top: 15px;
+    table-layout: fixed;
+    height: 50%;
   }
+
+
   .successbutton {
     background-color: #4CAF50;
     cursor: pointer;
     text-align: center;
+    color: white;
+    padding: 8px;
+    font-size: 15px;
+    border: none;
   }
+
     .successbutton:hover {
       background-color: #3e8e41
     }
+
+  div.divborders {
+    width: 40%;
+    border: 1px dashed black;
+    background-color: antiquewhite;
+  }
+
+  .tabledata {
+    height: 200px;
+  }
+
+  .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+  }
 </style>
 
 <div>
-  <b>Task Information</b>
-  <div>
-  </div>
-  <button class="successbutton">New Task</button>
-  <table class="projectList" border="1">
+  <button class="successbutton" (click)="AddTask()">New Task</button>
+  <select (change)="onChange($event.target.value)" class="dropbtn">
+    <option *ngFor="let task of Tasks" class="dropdown-content">{{task.ProjectTitle}}</option>
+  </select>
+  <br />
+  <br />
+  <table id="projectList" border="1">
     <thead>
       <tr>
-        <th>Projects</th>
         <th>To Do</th>
         <th>In Progress</th>
         <th>Completed</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of Tasks">
-        <td align="center">
-         {{task.ProjectTitle}}
-        </td>
-        <td align="center">
-          <table border="1">
-            <tr>
-              <td colspan="2" align="center">
-                Task Details
-              </td>
-            </tr>
-            <tr>
-              <td align="center">Task Title</td>
-              <td align="center">{{task.TaskTitle}}</td>
-            </tr>
-            <tr>
-              <td align="center">Description</td>
-              <td align="center">{{task.Description}}</td>
-            </tr>
-            <tr>
-              <td align="center">Due Date</td>
-              <td align="center">{{task.DueDate}}</td>
-            </tr>
-            <tr *ngIf='MoreDetails'>
-              <td align="center">Assigned to</td>
-              <td align="center">{{task.AssignedTo}}</td>
-            </tr>
-            <tr *ngIf='MoreDetails'>
-              <td align="center">Status</td>
-              <td align="center">{{task.Status}}</td>
-            </tr>
-            <tr *ngIf='MoreDetails'>
-              <td align="center">Created By</td>
-              <td align="center">{{task.CreatedBy}}</td>
-            </tr>
-            <tr *ngIf='MoreDetails'>
-              <td align="center">Created On</td>
-              <td align="center">{{task.CreatedOn}}</td>
-            </tr>
-            <tr>
-              <td align="center" colspan="2">
-                <button class="successbutton" (click)="toggleDetails()"> {{MoreDetails ? 'Close' : 'More'}} Details</button>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td align="center">
+      <tr *ngFor="let task of Tasks1">
+        <td align="center" class="tabledata">
+          <div class="divborders">
+            <div>
+              <label class="labels">
+                Task Title:
+              </label>
+              <label>{{task.TaskTitle}}</label>
+            </div>
+            <div>
+              <label class="labels">
+                Description:
+              </label>
+              <label>{{task.Description}}</label>
+            </div>
+            <div>
+              <label class="labels">
+                Due Date:
+              </label>
+              <label>{{task.DueDate}}</label>
 
+            </div>
+            <div>
+            </div>
+            <button (click)="MoreDetails(task)" class="successbutton">More Details</button>
+          </div>
         </td>
         <td align="center">
-
+          <div>
+          </div>
         </td>
+        <td align="center"></td>
       </tr>
     </tbody>
   </table>
+  <table id="projectList1" border="1">
+    <thead>
+      <tr>
+        <th>To Do</th>
+        <th>In Progress</th>
+        <th>Completed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of Tasks1">
+        <td>
+          <div>
+            <ul>
+              <li *ngFor="let task of ToDoList" pDraggable="task" (OnDragStart)="dragStart($event,task)" (OnDragEnd)="dragEnd($event)">
+                <div class="divborders">
+                  <div>
+                    <label class="labels">
+                      Task Title:
+                    </label>
+                    <label>{{task.TaskTitle}}</label>
+                  </div>
+                  <div>
+                    <label class="labels">
+                      Description:
+                    </label>
+                    <label>{{task.Description}}</label>
+                  </div>
+                  <div>
+                    <label class="labels">
+                      Due Date:
+                    </label>
+                    <label>{{task.DueDate}}</label>
+                  </div>
+                  <div>
+                  </div>
+                  <button (click)="MoreDetails(task)" class="successbutton">More Details</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div (pDroppable)="TaskModel" (onDrop)="drop($event,'inprogress')" [ngClass]="">
+            <ul>
+              <li *ngFor="let task of InProgress" pDraggable="task" (OnDragStart)="inprogressdragStart($event,task)" (OnDragEnd)="dragEnd($event)">
+                <div class="divborders">
+                  <div>
+                    <label class="labels">
+                      Task Title:
+                    </label>
+                    <label>{{task.TaskTitle}}</label>
+                  </div>
+                  <div>
+                    <label class="labels">
+                      Description:
+                    </label>
+                    <label>{{task.Description}}</label>
+                  </div>
+                  <div>
+                    <label class="labels">
+                      Due Date:
+                    </label>
+                    <label>{{task.DueDate}}</label>
 
+                  </div>
+                  <div>
+                  </div>
+                  <button (click)="MoreDetails(task)" class="successbutton">More Details</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </td>
+
+        <td>
+          <div (pDroppable)="TaskModel" (onDrop)="drop($event,'completed')">
+            <ul>
+              <li *ngFor="let task of CompletedList">
+                <div class="divborders">
+                  <div>
+                    <label class="labels">
+                      Task Title:
+                    </label>
+                    <label>{{task.TaskTitle}}</label>
+                  </div>
+                  <div>
+                    <label class="labels">
+                      Description:
+                    </label>
+                    <label>{{task.Description}}</label>
+                  </div>
+                  <div>
+                    <label class="labels">
+                      Due Date:
+                    </label>
+                    <label>{{task.DueDate}}</label>
+
+                  </div>
+                  <div>
+                  </div>
+                  <button (click)="MoreDetails(task)" class="successbutton">More Details</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
 </div>
-<!--<popup>
+<popup #Addpopup>
   <table>
     <tr>
       <td>
@@ -136,4 +258,56 @@
       </td>
     </tr>
   </table>
-</popup>-->
+  <button value="{{mode}}" (click)="Addtask()" class="successbutton">Update</button>
+  <button (click)="CancelAdd()" class="successbutton">Cancel</button>
+</popup>
+
+<popup #MoreDetailspopup>
+  <table>
+    <tr>
+      <td align="center">Task Title</td>
+      <td align="center">
+        <input type="text" class="textboxs" name="TaskTitle" [(ngModel)]="mredetails.TaskTitle" #TaskTitle="ngModel" [readonly]="iseditable" />
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Description</td>
+      <td align="center">
+        <input type="text" class="textboxs" name="Description" [(ngModel)]="mredetails.Description" #Description="ngModel" [readonly]="iseditable" />
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Due Date</td>
+      <td align="center">
+        <input type="text" class="textboxs" name="DueDate" [(ngModel)]="mredetails.DueDate" #DueDate="ngModel" [readonly]="iseditable" />
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Assigned To</td>
+      <td align="center">
+        <input type="text" class="textboxs" name="AssignedTo" [(ngModel)]="mredetails.AssignedTo" #AssignedTo="ngModel" [readonly]="iseditable" />
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Status</td>
+      <td align="center">
+        <input type="text" class="textboxs" name="Status" [(ngModel)]="mredetails.Status" #Status="ngModel" [readonly]="iseditable" />
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Created By</td>
+      <td align="center">
+        <input type="text" id="createdOn" class="textboxs" name="CreatedBy" [(ngModel)]="mredetails.CreatedBy" #CreatedBy="ngModel" [readonly]="iseditable" />
+      </td>
+    </tr>
+    <tr>
+      <td align="center">Created On</td>
+      <td align="center">
+        <input type="text" class="textboxs" name="CreatedOn" [(ngModel)]="mredetails.CreatedOn" #CreatedOn="ngModel" [readonly]="iseditable" />
+      </td>
+    </tr>
+  </table>
+  <button (click)="editmoredetails()" class="successbutton">Edit</button>
+  <button (click)="CancelMreDetails()" class="successbutton">Cancel</button>
+</popup>
+
