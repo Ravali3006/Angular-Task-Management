@@ -8,11 +8,7 @@ import { Popup } from 'ng2-opd-popup';
 export class HomeComponent implements OnInit {
   Tasks: TaskModel[];
   Tasks1: TaskModel[];
-  taskModel: TaskModel;
   mredetails: TaskModel;
-  ToDoList: TaskModel[];
-  InProgress: TaskModel[];
-  CompletedList: TaskModel[];
   iseditable: boolean = true;
   projddl: string;
   @ViewChild('Addpopup') Addpopup: Popup;
@@ -42,7 +38,7 @@ export class HomeComponent implements OnInit {
     }]
     this.mredetails = new TaskModel();
     this.onChange(this.Tasks[0].ProjectTitle);
-    this.ToDoList = this.Tasks1;
+  
   }
 
   ProjectTaskDetails: boolean = false;
@@ -52,7 +48,7 @@ export class HomeComponent implements OnInit {
   }
   AddTask() {
     this.Addpopup.options = {
-      color: "#4180ab",
+      color: "#4CAF50",
       header: "Add Form",
       showButtons: false
     }
@@ -61,7 +57,7 @@ export class HomeComponent implements OnInit {
 
   MoreDetails(item: TaskModel) {
     this.MoreDetailspopup.options = {
-      color: "#4180ab",
+      color: "#4CAF50",
       header: "More Details",
       showButtons: false
     }
@@ -76,6 +72,7 @@ export class HomeComponent implements OnInit {
 
   editmoredetails() {
     this.iseditable = false;
+
   }
 
   CancelAdd() {
@@ -86,43 +83,16 @@ export class HomeComponent implements OnInit {
     this.MoreDetailspopup.hide();
   }
 
-  dragStart(event: any, task: TaskModel) {
-    this.taskModel = task;
+  allowDrop(event) {
+    event.preventDefault();
   }
-  inProgressdragStart(event: any, task: TaskModel) {
-    this.taskModel = task;
+  drag(event) {
+    event.dataTransfer.setData("item", event.target.id);
   }
-  drop(event: any, source: string) {
-    if (this.taskModel) {
-      if (source == "inprogress") {
-        if (this.InProgress.filter((val, i) => val == this.taskModel).length == 0) {
-          this.InProgress = [...this.InProgress, this.taskModel];
-        }
-      }
-      else {
-        if (this.CompletedList.filter((val, i) => val == this.taskModel).length == 0) {
-          this.CompletedList = [...this.CompletedList, this.taskModel];
-        }
-      }
-      let draggedCarIndex = this.findIndex(this.taskModel);
-      this.ToDoList = this.ToDoList.filter((val, i) => i != draggedCarIndex);
-      this.taskModel = null;
-    }
-  }
-
-  dragEnd(event: any) {
-    this.taskModel = null;
-  }
-
-  findIndex(task: TaskModel) {
-    let index = -1;
-    for (let i = 0; i < this.ToDoList.length; i++) {
-      if (task.ProjectTitle == this.ToDoList[i].ProjectTitle) {
-        index = i;
-        break;
-      }
-    }
-    return index;
+  drop(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("item");
+    event.target.appendChild(document.getElementById(data));
   }
 }
 

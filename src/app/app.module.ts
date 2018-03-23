@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { DragDropModule } from 'primeng/primeng';
 import { DialogModule } from 'primeng/primeng';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragDropDirectiveModule } from "angular4-drag-drop";
 
 
 import { NavComponent } from './components/navigation/nav.component';
@@ -31,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpModule,
     CommonModule,
     DragDropModule,
+    DragDropDirectiveModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'projects', pathMatch: 'full' },

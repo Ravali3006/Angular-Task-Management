@@ -38,7 +38,7 @@ export class ProjectComponent implements OnInit {
   }
   AddProject() {
     this.addpopup.options = {
-      color: "#4180ab",
+      color: "#4CAF50",
       header: "Add Form",
       //confirmBtnContent: "Save",
       //cancleBtnContent: "Cancel",
@@ -50,7 +50,7 @@ export class ProjectComponent implements OnInit {
   }
   EditProject(item: ProjectModel) {
     this.Editpopup.options = {
-      color: "#4180ab",
+      color: "#4CAF50",
       header: "Edit Form",
       showButtons: false,
       //confirmBtnContent: "Update",

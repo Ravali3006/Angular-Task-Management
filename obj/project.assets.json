@@ -12544,11 +12544,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\raval\\Documents\\Visual Studio 2017\\Projects\\AngularTaskApp\\AngularTaskApp\\AngularTaskApp.csproj",
+      "projectUniqueName": "C:\\Users\\raval\\documents\\visual studio 2017\\Projects\\AngularTaskApp\\AngularTaskApp\\AngularTaskApp.csproj",
       "projectName": "AngularTaskApp",
-      "projectPath": "C:\\Users\\raval\\Documents\\Visual Studio 2017\\Projects\\AngularTaskApp\\AngularTaskApp\\AngularTaskApp.csproj",
+      "projectPath": "C:\\Users\\raval\\documents\\visual studio 2017\\Projects\\AngularTaskApp\\AngularTaskApp\\AngularTaskApp.csproj",
       "packagesPath": "C:\\Users\\raval\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\raval\\Documents\\Visual Studio 2017\\Projects\\AngularTaskApp\\AngularTaskApp\\obj\\",
+      "outputPath": "C:\\Users\\raval\\documents\\visual studio 2017\\Projects\\AngularTaskApp\\AngularTaskApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
